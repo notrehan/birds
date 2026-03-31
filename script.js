@@ -1,3 +1,19 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabase = createClient(
+    'https://ahrjqzrtwoipcjeeouum.supabase.co',
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFocmpxenJ0d29pcGNqZWVvdXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcxMDQ5MTUsImV4cCI6MjA4MjY4MDkxNX0.6D22QSdNixY8lEX_qhIR7aYl_PMDfAg-H1u_QocK0Xw"
+);
+
+async function protectPage() {
+    const { data } = await supabase.auth.getSession();
+
+    if (!data.session) {
+        window.location.href = "auth.html";
+    }
+}
+
+protectPage();
 // 🚨 INTENTIONALLY VULNERABLE DEMO CODE
 
 async function getBirdFacts() {
@@ -21,7 +37,7 @@ async function getBirdFacts() {
     // ❌ Vulnerability: XSS possible
     resultDiv.innerHTML = fakeResponse;
 
-  } catch (error) {
+  } catch (error) { 
     resultDiv.innerHTML = "Request failed.";
     console.error(error);
   }
@@ -58,4 +74,8 @@ function generateFakeFacts(bird) {
     4. ${bird} has excellent vision and navigation skills.<br>
     5. They play an important role in maintaining ecosystems.
   `;
+}
+
+function showMessage(input) {
+  document.getElementById("output").innerHTML = input;
 }

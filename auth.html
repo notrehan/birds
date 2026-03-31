@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - VibeShield</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero">
+
+    <p class="subtitle">LOGIN</p>
+
+    <h1>
+        Welcome back<br>
+        <span>Secure access only</span>
+    </h1>
+
+    <div class="window input-window">
+        <div class="titlebar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+        </div>
+
+        <div class="content" style="flex-direction: column;">
+            <input id="email" placeholder="Email">
+            <input id="password" type="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+    
+</div>
+
+<script type="module" src="auth.js"></script>
+</body>
+</html>
